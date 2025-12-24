@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { TextProps, TextPropsSchema } from '@usewaypoint/block-text';
 
+import { useTranslation } from '../../../LocalizationContext';
+
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import BooleanInput from './helpers/inputs/BooleanInput';
 import TextInput from './helpers/inputs/TextInput';
@@ -12,6 +14,7 @@ type TextSidebarPanelProps = {
   setData: (v: TextProps) => void;
 };
 export default function TextSidebarPanel({ data, setData }: TextSidebarPanelProps) {
+  const { t } = useTranslation();
   const [, setErrors] = useState<Zod.ZodError | null>(null);
 
   const updateData = (d: unknown) => {
@@ -25,15 +28,15 @@ export default function TextSidebarPanel({ data, setData }: TextSidebarPanelProp
   };
 
   return (
-    <BaseSidebarPanel title="Text block">
+    <BaseSidebarPanel title={t('panels.text')}>
       <TextInput
-        label="Content"
+        label={t('fields.content')}
         rows={5}
         defaultValue={data.props?.text ?? ''}
         onChange={(text) => updateData({ ...data, props: { ...data.props, text } })}
       />
       <BooleanInput
-        label="Markdown"
+        label={t('fields.markdown')}
         defaultValue={data.props?.markdown ?? false}
         onChange={(markdown) => updateData({ ...data, props: { ...data.props, markdown } })}
       />

@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { HeightOutlined } from '@mui/icons-material';
 import { DividerProps, DividerPropsDefaults, DividerPropsSchema } from '@usewaypoint/block-divider';
 
+import { useTranslation } from '../../../LocalizationContext';
+
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import ColorInput from './helpers/inputs/ColorInput';
 import SliderInput from './helpers/inputs/SliderInput';
@@ -13,6 +15,7 @@ type DividerSidebarPanelProps = {
   setData: (v: DividerProps) => void;
 };
 export default function DividerSidebarPanel({ data, setData }: DividerSidebarPanelProps) {
+  const { t } = useTranslation();
   const [, setErrors] = useState<Zod.ZodError | null>(null);
   const updateData = (d: unknown) => {
     const res = DividerPropsSchema.safeParse(d);
@@ -28,14 +31,14 @@ export default function DividerSidebarPanel({ data, setData }: DividerSidebarPan
   const lineHeight = data.props?.lineHeight ?? DividerPropsDefaults.lineHeight;
 
   return (
-    <BaseSidebarPanel title="Divider block">
+    <BaseSidebarPanel title={t('panels.divider')}>
       <ColorInput
-        label="Color"
+        label={t('fields.lineColor')}
         defaultValue={lineColor}
         onChange={(lineColor) => updateData({ ...data, props: { ...data.props, lineColor } })}
       />
       <SliderInput
-        label="Height"
+        label={t('fields.height')}
         iconLabel={<HeightOutlined sx={{ color: 'text.secondary' }} />}
         units="px"
         step={1}

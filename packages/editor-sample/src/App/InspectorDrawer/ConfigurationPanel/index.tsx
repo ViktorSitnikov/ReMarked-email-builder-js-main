@@ -4,6 +4,7 @@ import { Box, Typography } from '@mui/material';
 
 import { TEditorBlock } from '../../../documents/editor/core';
 import { setDocument, useDocument, useSelectedBlockId } from '../../../documents/editor/EditorContext';
+import { useTranslation } from '../../LocalizationContext';
 
 import AvatarSidebarPanel from './input-panels/AvatarSidebarPanel';
 import ButtonSidebarPanel from './input-panels/ButtonSidebarPanel';
@@ -26,15 +27,16 @@ function renderMessage(val: string) {
 }
 
 export default function ConfigurationPanel() {
+  const { t } = useTranslation();
   const document = useDocument();
   const selectedBlockId = useSelectedBlockId();
 
   if (!selectedBlockId) {
-    return renderMessage('Click on a block to inspect.');
+    return renderMessage(t('messages.clickToInspect'));
   }
   const block = document[selectedBlockId];
   if (!block) {
-    return renderMessage(`Block with id ${selectedBlockId} was not found. Click on a block to reset.`);
+    return renderMessage(t('messages.blockNotFound').replace('{id}', selectedBlockId));
   }
 
   const setBlock = (conf: TEditorBlock) => setDocument({ [selectedBlockId]: conf });

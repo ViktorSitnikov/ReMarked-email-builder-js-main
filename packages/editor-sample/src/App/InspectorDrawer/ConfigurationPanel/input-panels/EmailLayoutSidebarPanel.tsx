@@ -5,6 +5,7 @@ import { RoundedCornerOutlined } from '@mui/icons-material';
 import EmailLayoutPropsSchema, {
   EmailLayoutProps,
 } from '../../../../documents/blocks/EmailLayout/EmailLayoutPropsSchema';
+import { useTranslation } from '../../../LocalizationContext';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import ColorInput, { NullableColorInput } from './helpers/inputs/ColorInput';
@@ -16,6 +17,7 @@ type EmailLayoutSidebarFieldsProps = {
   setData: (v: EmailLayoutProps) => void;
 };
 export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutSidebarFieldsProps) {
+  const { t } = useTranslation();
   const [, setErrors] = useState<Zod.ZodError | null>(null);
 
   const updateData = (d: unknown) => {
@@ -29,19 +31,19 @@ export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutS
   };
 
   return (
-    <BaseSidebarPanel title="Global">
+    <BaseSidebarPanel title={t('panels.global')}>
       <ColorInput
-        label="Backdrop color"
+        label={t('fields.backdropColor')}
         defaultValue={data.backdropColor ?? '#F5F5F5'}
         onChange={(backdropColor) => updateData({ ...data, backdropColor })}
       />
       <ColorInput
-        label="Canvas color"
+        label={t('fields.canvasColor')}
         defaultValue={data.canvasColor ?? '#FFFFFF'}
         onChange={(canvasColor) => updateData({ ...data, canvasColor })}
       />
       <NullableColorInput
-        label="Canvas border color"
+        label={t('fields.canvasBorderColor')}
         defaultValue={data.borderColor ?? null}
         onChange={(borderColor) => updateData({ ...data, borderColor })}
       />
@@ -52,17 +54,17 @@ export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutS
         marks
         min={0}
         max={48}
-        label="Canvas border radius"
+        label={t('fields.canvasBorderRadius')}
         defaultValue={data.borderRadius ?? 0}
         onChange={(borderRadius) => updateData({ ...data, borderRadius })}
       />
       <NullableFontFamily
-        label="Font family"
+        label={t('fields.fontFamily')}
         defaultValue="MODERN_SANS"
         onChange={(fontFamily) => updateData({ ...data, fontFamily })}
       />
       <ColorInput
-        label="Text color"
+        label={t('fields.textColor')}
         defaultValue={data.textColor ?? '#262626'}
         onChange={(textColor) => updateData({ ...data, textColor })}
       />

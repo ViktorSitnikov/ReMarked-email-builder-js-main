@@ -8,6 +8,8 @@ import {
 import { Stack, ToggleButton } from '@mui/material';
 import { ImageProps, ImagePropsSchema } from '@usewaypoint/block-image';
 
+import { useTranslation } from '../../../LocalizationContext';
+
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import RadioGroupInput from './helpers/inputs/RadioGroupInput';
 import TextDimensionInput from './helpers/inputs/TextDimensionInput';
@@ -19,6 +21,7 @@ type ImageSidebarPanelProps = {
   setData: (v: ImageProps) => void;
 };
 export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelProps) {
+  const { t } = useTranslation();
   const [, setErrors] = useState<Zod.ZodError | null>(null);
 
   const updateData = (d: unknown) => {
@@ -32,9 +35,9 @@ export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelPr
   };
 
   return (
-    <BaseSidebarPanel title="Image block">
+    <BaseSidebarPanel title={t('panels.image')}>
       <TextInput
-        label="Source URL"
+        label={t('fields.sourceUrl')}
         defaultValue={data.props?.url ?? ''}
         onChange={(v) => {
           const url = v.trim().length === 0 ? null : v.trim();
@@ -43,12 +46,12 @@ export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelPr
       />
 
       <TextInput
-        label="Alt text"
+        label={t('fields.altText')}
         defaultValue={data.props?.alt ?? ''}
         onChange={(alt) => updateData({ ...data, props: { ...data.props, alt } })}
       />
       <TextInput
-        label="Click through URL"
+        label={t('fields.clickThroughUrl')}
         defaultValue={data.props?.linkHref ?? ''}
         onChange={(v) => {
           const linkHref = v.trim().length === 0 ? null : v.trim();
@@ -57,19 +60,19 @@ export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelPr
       />
       <Stack direction="row" spacing={2}>
         <TextDimensionInput
-          label="Width"
+          label={t('fields.width')}
           defaultValue={data.props?.width}
           onChange={(width) => updateData({ ...data, props: { ...data.props, width } })}
         />
         <TextDimensionInput
-          label="Height"
+          label={t('fields.height')}
           defaultValue={data.props?.height}
           onChange={(height) => updateData({ ...data, props: { ...data.props, height } })}
         />
       </Stack>
 
       <RadioGroupInput
-        label="Alignment"
+        label={t('fields.alignment')}
         defaultValue={data.props?.contentAlignment ?? 'middle'}
         onChange={(contentAlignment) => updateData({ ...data, props: { ...data.props, contentAlignment } })}
       >

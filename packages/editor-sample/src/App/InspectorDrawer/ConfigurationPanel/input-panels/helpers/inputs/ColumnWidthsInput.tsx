@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { Stack } from '@mui/material';
 
+import { useTranslation } from '../../../../../LocalizationContext';
+
 import TextDimensionInput from './TextDimensionInput';
 
 export const DEFAULT_2_COLUMNS = [6] as [number];
@@ -19,6 +21,7 @@ type ColumnsLayoutInputProps = {
   onChange: (v: FixedWidths | null | undefined) => void;
 };
 export default function ColumnWidthsInput({ defaultValue, onChange }: ColumnsLayoutInputProps) {
+  const { t } = useTranslation();
   const [currentValue, setCurrentValue] = useState<[TWidthValue, TWidthValue, TWidthValue]>(() => {
     if (defaultValue) {
       return defaultValue;
@@ -38,7 +41,7 @@ export default function ColumnWidthsInput({ defaultValue, onChange }: ColumnsLay
   if (columnsCountValue === 3) {
     column3 = (
       <TextDimensionInput
-        label="Column 3"
+        label={t('fields.column3')}
         defaultValue={currentValue?.[2]}
         onChange={(v) => {
           setIndexValue(2, v);
@@ -49,14 +52,14 @@ export default function ColumnWidthsInput({ defaultValue, onChange }: ColumnsLay
   return (
     <Stack direction="row" spacing={1}>
       <TextDimensionInput
-        label="Column 1"
+        label={t('fields.column1')}
         defaultValue={currentValue?.[0]}
         onChange={(v) => {
           setIndexValue(0, v);
         }}
       />
       <TextDimensionInput
-        label="Column 2"
+        label={t('fields.column2')}
         defaultValue={currentValue?.[1]}
         onChange={(v) => {
           setIndexValue(1, v);

@@ -4,6 +4,8 @@ import { AspectRatioOutlined } from '@mui/icons-material';
 import { ToggleButton } from '@mui/material';
 import { AvatarProps, AvatarPropsDefaults, AvatarPropsSchema } from '@usewaypoint/block-avatar';
 
+import { useTranslation } from '../../../LocalizationContext';
+
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import RadioGroupInput from './helpers/inputs/RadioGroupInput';
 import SliderInput from './helpers/inputs/SliderInput';
@@ -15,6 +17,7 @@ type AvatarSidebarPanelProps = {
   setData: (v: AvatarProps) => void;
 };
 export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanelProps) {
+  const { t } = useTranslation();
   const [, setErrors] = useState<Zod.ZodError | null>(null);
   const updateData = (d: unknown) => {
     const res = AvatarPropsSchema.safeParse(d);
@@ -32,9 +35,9 @@ export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanel
   const shape = data.props?.shape ?? AvatarPropsDefaults.shape;
 
   return (
-    <BaseSidebarPanel title="Avatar block">
+    <BaseSidebarPanel title={t('panels.avatar')}>
       <SliderInput
-        label="Size"
+        label={t('fields.size')}
         iconLabel={<AspectRatioOutlined sx={{ color: 'text.secondary' }} />}
         units="px"
         step={3}
@@ -46,25 +49,25 @@ export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanel
         }}
       />
       <RadioGroupInput
-        label="Shape"
+        label={t('fields.shape')}
         defaultValue={shape}
         onChange={(shape) => {
           updateData({ ...data, props: { ...data.props, shape } });
         }}
       >
-        <ToggleButton value="circle">Circle</ToggleButton>
-        <ToggleButton value="square">Square</ToggleButton>
-        <ToggleButton value="rounded">Rounded</ToggleButton>
+        <ToggleButton value="circle">{t('options.circle')}</ToggleButton>
+        <ToggleButton value="square">{t('options.square')}</ToggleButton>
+        <ToggleButton value="rounded">{t('options.rounded')}</ToggleButton>
       </RadioGroupInput>
       <TextInput
-        label="Image URL"
+        label={t('fields.imageUrl')}
         defaultValue={imageUrl}
         onChange={(imageUrl) => {
           updateData({ ...data, props: { ...data.props, imageUrl } });
         }}
       />
       <TextInput
-        label="Alt text"
+        label={t('fields.altText')}
         defaultValue={alt}
         onChange={(alt) => {
           updateData({ ...data, props: { ...data.props, alt } });

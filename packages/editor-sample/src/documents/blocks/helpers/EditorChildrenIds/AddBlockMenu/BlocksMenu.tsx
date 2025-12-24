@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Box, Menu } from '@mui/material';
 
+import { useTranslation } from '../../../../../App/LocalizationContext';
 import { TEditorBlock } from '../../../../editor/core';
 
 import BlockButton from './BlockButton';
@@ -13,6 +14,7 @@ type BlocksMenuProps = {
   onSelect: (block: TEditorBlock) => void;
 };
 export default function BlocksMenu({ anchorEl, setAnchorEl, onSelect }: BlocksMenuProps) {
+  const { t } = useTranslation();
   const onClose = () => {
     setAnchorEl(null);
   };
@@ -36,7 +38,7 @@ export default function BlocksMenu({ anchorEl, setAnchorEl, onSelect }: BlocksMe
     >
       <Box sx={{ p: 1, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
         {BUTTONS.map((k, i) => (
-          <BlockButton key={i} label={k.label} icon={k.icon} onClick={() => onClick(k.block())} />
+          <BlockButton key={i} label={t(`blocks.${k.labelKey}`)} icon={k.icon} onClick={() => onClick(k.block())} />
         ))}
       </Box>
     </Menu>

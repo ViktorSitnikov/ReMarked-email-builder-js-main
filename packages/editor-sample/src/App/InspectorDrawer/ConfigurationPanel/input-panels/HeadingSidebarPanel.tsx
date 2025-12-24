@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { ToggleButton } from '@mui/material';
 import { HeadingProps, HeadingPropsDefaults, HeadingPropsSchema } from '@usewaypoint/block-heading';
 
+import { useTranslation } from '../../../LocalizationContext';
+
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import RadioGroupInput from './helpers/inputs/RadioGroupInput';
 import TextInput from './helpers/inputs/TextInput';
@@ -13,6 +15,7 @@ type HeadingSidebarPanelProps = {
   setData: (v: HeadingProps) => void;
 };
 export default function HeadingSidebarPanel({ data, setData }: HeadingSidebarPanelProps) {
+  const { t } = useTranslation();
   const [, setErrors] = useState<Zod.ZodError | null>(null);
 
   const updateData = (d: unknown) => {
@@ -26,9 +29,9 @@ export default function HeadingSidebarPanel({ data, setData }: HeadingSidebarPan
   };
 
   return (
-    <BaseSidebarPanel title="Heading block">
+    <BaseSidebarPanel title={t('panels.heading')}>
       <TextInput
-        label="Content"
+        label={t('fields.content')}
         rows={3}
         defaultValue={data.props?.text ?? HeadingPropsDefaults.text}
         onChange={(text) => {
@@ -36,7 +39,7 @@ export default function HeadingSidebarPanel({ data, setData }: HeadingSidebarPan
         }}
       />
       <RadioGroupInput
-        label="Level"
+        label={t('fields.level')}
         defaultValue={data.props?.level ?? HeadingPropsDefaults.level}
         onChange={(level) => {
           updateData({ ...data, props: { ...data.props, level } });

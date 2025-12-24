@@ -1,7 +1,16 @@
 import React from 'react';
 
-import { MonitorOutlined, PhoneIphoneOutlined } from '@mui/icons-material';
-import { Box, Stack, SxProps, ToggleButton, ToggleButtonGroup, Tooltip } from '@mui/material';
+import { LanguageOutlined, MonitorOutlined, PhoneIphoneOutlined } from '@mui/icons-material';
+import {
+  Box,
+  Menu,
+  MenuItem,
+  Stack,
+  SxProps,
+  ToggleButton,
+  ToggleButtonGroup,
+  Tooltip,
+} from '@mui/material';
 import { Reader } from '@usewaypoint/email-builder';
 
 import EditorBlock from '../../documents/editor/EditorBlock';
@@ -11,6 +20,7 @@ import {
   useSelectedMainTab,
   useSelectedScreenSize,
 } from '../../documents/editor/EditorContext';
+import { useTranslation } from '../LocalizationContext';
 import ToggleInspectorPanelButton from '../InspectorDrawer/ToggleInspectorPanelButton';
 import ToggleSamplesPanelButton from '../SamplesDrawer/ToggleSamplesPanelButton';
 
@@ -22,9 +32,23 @@ import MainTabsGroup from './MainTabsGroup';
 import ShareButton from './ShareButton';
 
 export default function TemplatePanel() {
+  const { t, language, setLanguage } = useTranslation();
+  const [langMenuAnchor, setLangMenuAnchor] = React.useState<null | HTMLElement>(null);
+
   const document = useDocument();
   const selectedMainTab = useSelectedMainTab();
   const selectedScreenSize = useSelectedScreenSize();
+
+  const handleLangClick = (event: React.MouseEvent<HTMLElement>) => {
+    setLangMenuAnchor(event.currentTarget);
+  };
+
+  const handleLangClose = (lang?: 'en' | 'ru') => {
+    if (lang) {
+      setLanguage(lang);
+    }
+    setLangMenuAnchor(null);
+  };
 
   let mainBoxSx: SxProps = {
     height: '100%',
@@ -99,12 +123,12 @@ export default function TemplatePanel() {
             <ImportJson />
             <ToggleButtonGroup value={selectedScreenSize} exclusive size="small" onChange={handleScreenSizeChange}>
               <ToggleButton value="desktop">
-                <Tooltip title="Desktop view">
+                <Tooltip title={t('tooltips.desktop')}>
                   <MonitorOutlined fontSize="small" />
                 </Tooltip>
               </ToggleButton>
               <ToggleButton value="mobile">
-                <Tooltip title="Mobile view">
+                <Tooltip title={t('tooltips.mobile')}>
                   <PhoneIphoneOutlined fontSize="small" />
                 </Tooltip>
               </ToggleButton>

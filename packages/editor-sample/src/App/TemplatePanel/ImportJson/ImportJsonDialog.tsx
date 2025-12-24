@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 
 import { resetDocument } from '../../../documents/editor/EditorContext';
+import { useTranslation } from '../../LocalizationContext';
 
 import validateJsonStringValue from './validateJsonStringValue';
 
@@ -20,6 +21,7 @@ type ImportJsonDialogProps = {
   onClose: () => void;
 };
 export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
+  const { t } = useTranslation();
   const [value, setValue] = useState('');
   const [error, setError] = useState<string | null>(null);
 
@@ -37,7 +39,7 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
 
   return (
     <Dialog open onClose={onClose}>
-      <DialogTitle>Import JSON</DialogTitle>
+      <DialogTitle>{t('importDialog.title')}</DialogTitle>
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
@@ -52,13 +54,13 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
       >
         <DialogContent>
           <Typography color="text.secondary" paragraph>
-            Copy and paste an EmailBuilder.js JSON (
+            {t('importDialog.description')}
             <Link
               href="https://gist.githubusercontent.com/jordanisip/efb61f56ba71bd36d3a9440122cb7f50/raw/30ea74a6ac7e52ebdc309bce07b71a9286ce2526/emailBuilderTemplate.json"
               target="_blank"
               underline="none"
             >
-              example
+              {t('importDialog.example')}
             </Link>
             ).
           </Typography>
@@ -68,7 +70,7 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
             value={value}
             onChange={handleChange}
             type="text"
-            helperText="This will override your current template."
+            helperText={t('importDialog.helperText')}
             variant="outlined"
             fullWidth
             rows={10}
@@ -77,10 +79,10 @@ export default function ImportJsonDialog({ onClose }: ImportJsonDialogProps) {
         </DialogContent>
         <DialogActions>
           <Button type="button" onClick={onClose}>
-            Cancel
+            {t('importDialog.cancel')}
           </Button>
           <Button variant="contained" type="submit" disabled={error !== null}>
-            Import
+            {t('importDialog.import')}
           </Button>
         </DialogActions>
       </form>

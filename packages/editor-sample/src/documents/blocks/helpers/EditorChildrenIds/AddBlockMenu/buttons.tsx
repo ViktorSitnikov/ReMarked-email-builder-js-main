@@ -16,13 +16,13 @@ import {
 import { TEditorBlock } from '../../../../editor/core';
 
 type TButtonProps = {
-  label: string;
+  labelKey: string;
   icon: JSX.Element;
   block: () => TEditorBlock;
 };
 export const BUTTONS: TButtonProps[] = [
   {
-    label: 'Heading',
+    labelKey: 'heading',
     icon: <HMobiledataOutlined />,
     block: () => ({
       type: 'Heading',
@@ -35,7 +35,7 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Text',
+    labelKey: 'text',
     icon: <NotesOutlined />,
     block: () => ({
       type: 'Text',
@@ -50,7 +50,7 @@ export const BUTTONS: TButtonProps[] = [
   },
 
   {
-    label: 'Button',
+    labelKey: 'button',
     icon: <SmartButtonOutlined />,
     block: () => ({
       type: 'Button',
@@ -64,7 +64,7 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Image',
+    labelKey: 'image',
     icon: <ImageOutlined />,
     block: () => ({
       type: 'Image',
@@ -80,7 +80,7 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Avatar',
+    labelKey: 'avatar',
     icon: <AccountCircleOutlined />,
     block: () => ({
       type: 'Avatar',
@@ -94,7 +94,7 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Divider',
+    labelKey: 'divider',
     icon: <HorizontalRuleOutlined />,
     block: () => ({
       type: 'Divider',
@@ -107,7 +107,7 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Spacer',
+    labelKey: 'spacer',
     icon: <Crop32Outlined />,
     block: () => ({
       type: 'Spacer',
@@ -115,7 +115,7 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Html',
+    labelKey: 'html',
     icon: <HtmlOutlined />,
     block: () => ({
       type: 'Html',
@@ -130,7 +130,7 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Columns',
+    labelKey: 'columns',
     icon: <ViewColumnOutlined />,
     block: () => ({
       type: 'ColumnsContainer',
@@ -145,7 +145,7 @@ export const BUTTONS: TButtonProps[] = [
     }),
   },
   {
-    label: 'Container',
+    labelKey: 'container',
     icon: <LibraryAddOutlined />,
     block: () => ({
       type: 'Container',

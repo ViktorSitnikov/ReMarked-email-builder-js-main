@@ -11,6 +11,7 @@ import { ToggleButton } from '@mui/material';
 import ColumnsContainerPropsSchema, {
   ColumnsContainerProps,
 } from '../../../../documents/blocks/ColumnsContainer/ColumnsContainerPropsSchema';
+import { useTranslation } from '../../../LocalizationContext';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import ColumnWidthsInput from './helpers/inputs/ColumnWidthsInput';
@@ -23,6 +24,7 @@ type ColumnsContainerPanelProps = {
   setData: (v: ColumnsContainerProps) => void;
 };
 export default function ColumnsContainerPanel({ data, setData }: ColumnsContainerPanelProps) {
+  const { t } = useTranslation();
   const [, setErrors] = useState<Zod.ZodError | null>(null);
   const updateData = (d: unknown) => {
     const res = ColumnsContainerPropsSchema.safeParse(d);
@@ -35,9 +37,9 @@ export default function ColumnsContainerPanel({ data, setData }: ColumnsContaine
   };
 
   return (
-    <BaseSidebarPanel title="Columns block">
+    <BaseSidebarPanel title={t('panels.columns')}>
       <RadioGroupInput
-        label="Number of columns"
+        label={t('fields.columnsCount')}
         defaultValue={data.props?.columnsCount === 2 ? '2' : '3'}
         onChange={(v) => {
           updateData({ ...data, props: { ...data.props, columnsCount: v === '2' ? 2 : 3 } });
@@ -53,7 +55,7 @@ export default function ColumnsContainerPanel({ data, setData }: ColumnsContaine
         }}
       />
       <SliderInput
-        label="Columns gap"
+        label={t('fields.columnsGap')}
         iconLabel={<SpaceBarOutlined sx={{ color: 'text.secondary' }} />}
         units="px"
         step={4}
@@ -64,7 +66,7 @@ export default function ColumnsContainerPanel({ data, setData }: ColumnsContaine
         onChange={(columnsGap) => updateData({ ...data, props: { ...data.props, columnsGap } })}
       />
       <RadioGroupInput
-        label="Alignment"
+        label={t('fields.alignment')}
         defaultValue={data.props?.contentAlignment ?? 'middle'}
         onChange={(contentAlignment) => {
           updateData({ ...data, props: { ...data.props, contentAlignment } });

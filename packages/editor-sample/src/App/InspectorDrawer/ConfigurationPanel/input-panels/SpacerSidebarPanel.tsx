@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { HeightOutlined } from '@mui/icons-material';
 import { SpacerProps, SpacerPropsDefaults, SpacerPropsSchema } from '@usewaypoint/block-spacer';
 
+import { useTranslation } from '../../../LocalizationContext';
+
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import SliderInput from './helpers/inputs/SliderInput';
 
@@ -11,6 +13,7 @@ type SpacerSidebarPanelProps = {
   setData: (v: SpacerProps) => void;
 };
 export default function SpacerSidebarPanel({ data, setData }: SpacerSidebarPanelProps) {
+  const { t } = useTranslation();
   const [, setErrors] = useState<Zod.ZodError | null>(null);
 
   const updateData = (d: unknown) => {
@@ -24,9 +27,9 @@ export default function SpacerSidebarPanel({ data, setData }: SpacerSidebarPanel
   };
 
   return (
-    <BaseSidebarPanel title="Spacer block">
+    <BaseSidebarPanel title={t('panels.spacer')}>
       <SliderInput
-        label="Height"
+        label={t('fields.height')}
         iconLabel={<HeightOutlined sx={{ color: 'text.secondary' }} />}
         units="px"
         step={4}

@@ -65,7 +65,9 @@
     "clickThroughUrl": "Click through URL",
     "column1": "Column 1",
     "column2": "Column 2",
-    "column3": "Column 3"
+    "column3": "Column 3",
+    "uploadFiles": "Upload image",
+    "chooseImage": "Choose from uploaded ones"
   },
   "options": {
     "circle": "Circle",

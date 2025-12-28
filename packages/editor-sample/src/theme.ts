@@ -1,16 +1,17 @@
 import { alpha, createTheme, darken, lighten } from '@mui/material/styles';
 
 const BRAND_NAVY = '#212443';
-const BRAND_BLUE = '#7367F0';
+const BRAND_BLUE = '#0079CC';
 const BRAND_GREEN = '#1F8466';
 const BRAND_RED = '#E81212';
 const BRAND_YELLOW = '#F6DC9F';
-const BRAND_PURPLE = '#6C0E7C';
+const BRAND_PURPLE = '#7367F0';
 const BRAND_BROWN = '#CC996C';
+
 const STANDARD_FONT_FAMILY =
-  '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+  '"sofia-pro", "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif';
 const MONOSPACE_FONT_FAMILY =
-  'ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace';
+  '"sofia-pro", "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif';
 
 const BASE_THEME = createTheme({
   palette: {
@@ -24,6 +25,8 @@ const BASE_THEME = createTheme({
   },
   typography: {
     fontFamily: STANDARD_FONT_FAMILY,
+    htmlFontSize: 16,
+    fontSize: 16,
   },
 });
 
@@ -31,7 +34,7 @@ const THEME = createTheme(BASE_THEME, {
   palette: {
     brand: {
       navy: BRAND_NAVY,
-      blue: BRAND_BLUE,
+      blue: BRAND_PURPLE,
       red: BRAND_RED,
       green: BRAND_GREEN,
       yellow: BRAND_YELLOW,
@@ -63,10 +66,10 @@ const THEME = createTheme(BASE_THEME, {
       500: BRAND_YELLOW,
     },
     info: {
-      main: BRAND_BLUE,
+      main: BRAND_PURPLE,
     },
     primary: {
-      main: BRAND_BLUE,
+      main: BRAND_PURPLE,
     },
   },
   components: {
@@ -235,7 +238,7 @@ const THEME = createTheme(BASE_THEME, {
           width: 16,
           cursor: 'col-resize',
           '&:hover, &.Mui-active, &.Mui-focusVisible': {
-            boxShadow: `0 0 0 4px ${alpha(BRAND_BLUE, 0.2)}`,
+            boxShadow: `0 0 0 4px ${alpha(BRAND_PURPLE, 0.2)}`,
           },
           '&:before': {
             display: 'none',

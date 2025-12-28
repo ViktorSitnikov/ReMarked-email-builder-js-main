@@ -70,7 +70,7 @@ export const BUTTONS: TButtonProps[] = [
       type: 'Image',
       data: {
         props: {
-          url: 'https://assets.usewaypoint.com/sample-image.jpg',
+          url: 'https://sun9-17.userapi.com/s/v1/ig2/3RaHQYv_QSqzdLLvrAzz1uIpxf48keKFxk896SrVfWppFSPHbh4T9iD20LhBDRtvTk3TtqNBNqE6Cm8PKK9EMtR4.jpg?quality=95&as=32x7,48x11,72x16,108x24,160x36,240x54,360x82,480x109,540x122,640x145,720x163,1073x243&from=bu&cs=1073x0',
           alt: 'Sample product',
           contentAlignment: 'middle',
           linkHref: null,

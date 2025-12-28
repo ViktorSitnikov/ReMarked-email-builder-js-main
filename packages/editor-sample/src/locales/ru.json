@@ -65,7 +65,9 @@
     "clickThroughUrl": "Ссылка при клике",
     "column1": "Колонка 1",
     "column2": "Колонка 2",
-    "column3": "Колонка 3"
+    "column3": "Колонка 3",
+    "uploadFiles": "Загрузить изображение",
+    "chooseImage": "Выбрать из имеющихся"
   },
   "options": {
     "circle": "Круг",
@@ -86,7 +88,7 @@
     "language": "Язык",
     "download": "Скачать JSON файл",
     "import": "Импортировать JSON",
-    "share": "Поделиться шаблоном"
+    "share": "Закончить редактирование"
   },
   "importDialog": {
     "title": "Импорт JSON",

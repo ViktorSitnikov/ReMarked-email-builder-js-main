@@ -32,23 +32,11 @@ import MainTabsGroup from './MainTabsGroup';
 import ShareButton from './ShareButton';
 
 export default function TemplatePanel() {
-  const { t, language, setLanguage } = useTranslation();
-  const [langMenuAnchor, setLangMenuAnchor] = React.useState<null | HTMLElement>(null);
+  const { t } = useTranslation();
 
   const document = useDocument();
   const selectedMainTab = useSelectedMainTab();
   const selectedScreenSize = useSelectedScreenSize();
-
-  const handleLangClick = (event: React.MouseEvent<HTMLElement>) => {
-    setLangMenuAnchor(event.currentTarget);
-  };
-
-  const handleLangClose = (lang?: 'en' | 'ru') => {
-    if (lang) {
-      setLanguage(lang);
-    }
-    setLangMenuAnchor(null);
-  };
 
   let mainBoxSx: SxProps = {
     height: '100%',
@@ -113,14 +101,14 @@ export default function TemplatePanel() {
         justifyContent="space-between"
         alignItems="center"
       >
-        <ToggleSamplesPanelButton />
+        {/* <ToggleSamplesPanelButton /> */}
         <Stack px={2} direction="row" gap={2} width="100%" justifyContent="space-between" alignItems="center">
           <Stack direction="row" spacing={2}>
             <MainTabsGroup />
           </Stack>
           <Stack direction="row" spacing={2}>
-            <DownloadJson />
-            <ImportJson />
+            {/* <DownloadJson /> */}
+            {/* <ImportJson /> */}
             <ToggleButtonGroup value={selectedScreenSize} exclusive size="small" onChange={handleScreenSizeChange}>
               <ToggleButton value="desktop">
                 <Tooltip title={t('tooltips.desktop')}>
@@ -138,7 +126,7 @@ export default function TemplatePanel() {
         </Stack>
         <ToggleInspectorPanelButton />
       </Stack>
-      <Box sx={{ height: 'calc(100vh - 49px)', overflow: 'auto', minWidth: 370 }}>{renderMainPanel()}</Box>
+      <Box sx={{ height: 'calc(100vh - 49px)', overflow: 'auto', minWidth: 370, background: "#f5f5f5"}}>{renderMainPanel()}</Box>
     </>
   );
 }

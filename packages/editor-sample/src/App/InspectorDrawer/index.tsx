@@ -29,6 +29,12 @@ export default function InspectorDrawer() {
       variant="persistent"
       anchor="right"
       open={inspectorDrawerOpen}
+      PaperProps={{
+        sx: {
+          position: 'absolute',
+          height: '100%',
+        }
+      }}
       sx={{
         width: inspectorDrawerOpen ? INSPECTOR_DRAWER_WIDTH : 0,
       }}

@@ -21,11 +21,14 @@
         width: 100%;
       }
       #emailBuilder.opened {
-        position: fixed;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        right: 20px;
+        bottom: 20px;
+        box-shadow: 0px 0px 150px black;
+        border-radius: 10px;
+        overflow: hidden;
       }
     </style>
   </head>
@@ -33,8 +36,12 @@
     <div class="d-flex w-100 justify-content-center align-items-center flex-column" style="height: 100vh;">
       <button class="btn btn-primary openEditor mb-3">Открыть редактор</button>
       <div class="mb-3 w-50">
-        <label for="emailHtml" class="form-label">Example textarea</label>
+        <label for="emailHtml" class="form-label">HTML шаблона</label>
         <textarea class="form-control" id="emailHtml" rows="10"></textarea>
+      </div>
+      <div class="mb-3 w-50">
+        <label for="messageTemplateJson" class="form-label">JSON шаблона</label>
+        <textarea class="form-control" id="messageTemplateJson" rows="10"></textarea>
       </div>
     </div>
 

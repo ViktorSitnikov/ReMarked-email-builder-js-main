@@ -18,16 +18,17 @@ import { TEditorBlock } from '../../../../editor/core';
 type TButtonProps = {
   labelKey: string;
   icon: JSX.Element;
-  block: () => TEditorBlock;
+  block: (t: (path: string) => string) => TEditorBlock;
 };
+
 export const BUTTONS: TButtonProps[] = [
   {
     labelKey: 'heading',
     icon: <HMobiledataOutlined />,
-    block: () => ({
+    block: (t) => ({
       type: 'Heading',
       data: {
-        props: { text: 'Hello friend' },
+        props: { text: t('buttons.heading') },
         style: {
           padding: { top: 16, bottom: 16, left: 24, right: 24 },
         },
@@ -37,10 +38,10 @@ export const BUTTONS: TButtonProps[] = [
   {
     labelKey: 'text',
     icon: <NotesOutlined />,
-    block: () => ({
+    block: (t) => ({
       type: 'Text',
       data: {
-        props: { text: 'My new text block' },
+        props: { text: t('buttons.text') },
         style: {
           padding: { top: 16, bottom: 16, left: 24, right: 24 },
           fontWeight: 'normal',
@@ -52,11 +53,11 @@ export const BUTTONS: TButtonProps[] = [
   {
     labelKey: 'button',
     icon: <SmartButtonOutlined />,
-    block: () => ({
+    block: (t) => ({
       type: 'Button',
       data: {
         props: {
-          text: 'Button',
+          text: t('buttons.button'),
           url: 'https://www.usewaypoint.com',
         },
         style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
@@ -66,12 +67,12 @@ export const BUTTONS: TButtonProps[] = [
   {
     labelKey: 'image',
     icon: <ImageOutlined />,
-    block: () => ({
+    block: (t) => ({
       type: 'Image',
       data: {
         props: {
-          url: 'https://sun9-17.userapi.com/s/v1/ig2/3RaHQYv_QSqzdLLvrAzz1uIpxf48keKFxk896SrVfWppFSPHbh4T9iD20LhBDRtvTk3TtqNBNqE6Cm8PKK9EMtR4.jpg?quality=95&as=32x7,48x11,72x16,108x24,160x36,240x54,360x82,480x109,540x122,640x145,720x163,1073x243&from=bu&cs=1073x0',
-          alt: 'Sample product',
+          url: 'https://assets.usewaypoint.com/sample-image.jpg',
+          alt: t('buttons.imageAlt'),
           contentAlignment: 'middle',
           linkHref: null,
         },
@@ -117,10 +118,10 @@ export const BUTTONS: TButtonProps[] = [
   {
     labelKey: 'html',
     icon: <HtmlOutlined />,
-    block: () => ({
+    block: (t) => ({
       type: 'Html',
       data: {
-        props: { contents: '<strong>Hello world</strong>' },
+        props: { contents: t('buttons.html') },
         style: {
           fontSize: 16,
           textAlign: null,

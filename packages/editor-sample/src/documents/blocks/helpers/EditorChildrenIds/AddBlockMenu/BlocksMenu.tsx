@@ -38,7 +38,7 @@ export default function BlocksMenu({ anchorEl, setAnchorEl, onSelect }: BlocksMe
     >
       <Box sx={{ p: 1, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
         {BUTTONS.map((k, i) => (
-          <BlockButton key={i} label={t(`blocks.${k.labelKey}`)} icon={k.icon} onClick={() => onClick(k.block())} />
+          <BlockButton key={i} label={t(`blocks.${k.labelKey}`)} icon={k.icon} onClick={() => onClick(k.block(t))} />
         ))}
       </Box>
     </Menu>

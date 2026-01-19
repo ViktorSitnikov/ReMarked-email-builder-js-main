@@ -126,7 +126,7 @@ export default function TemplatePanel() {
         </Stack>
         <ToggleInspectorPanelButton />
       </Stack>
-      <Box sx={{ height: 'calc(100vh - 49px)', overflow: 'auto', minWidth: 370, background: "#f5f5f5"}}>{renderMainPanel()}</Box>
+      <Box sx={{ height: 'calc(100vh - 89px)', overflow: 'auto', minWidth: 370, background: "#f5f5f5"}}>{renderMainPanel()}</Box>
     </>
   );
 }

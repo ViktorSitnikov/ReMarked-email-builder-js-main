@@ -1,6 +1,7 @@
 ﻿import React, { useState, useEffect } from "react";
 
-import { Backdrop, Box, CircularProgress, ImageList, ImageListItem, Modal, Typography } from "@mui/material";
+import { Backdrop, Box, CircularProgress, ImageList, ImageListItem, Modal } from "@mui/material";
+import { UseNotification } from '../../../../../../App/NotificationContext';
 
 interface ReservedImage{
     id: number,
@@ -19,6 +20,7 @@ interface ImagePickerProps{
 }
 
 export default function ImagePicker({ isOpen, onClose, onSelect }: ImagePickerProps) {
+    const { showNotification } = UseNotification();
 
     const [images, setImages] = useState<ReservedImage[]>([]);
 
@@ -56,7 +58,10 @@ export default function ImagePicker({ isOpen, onClose, onSelect }: ImagePickerPr
 
                 }
                 catch (e) {
-                    console.log(e)
+                    console.log(e);
+                    onClose();
+                    showNotification(e.message);
+
                 }
                 finally {
                     setLoading(false);

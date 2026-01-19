@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { AspectRatioOutlined } from '@mui/icons-material';
-import { ToggleButton } from '@mui/material';
+import { Button, styled, ToggleButton } from '@mui/material';
 import { AvatarProps, AvatarPropsDefaults, AvatarPropsSchema } from '@usewaypoint/block-avatar';
 
 import { useTranslation } from '../../../LocalizationContext';
@@ -11,6 +11,8 @@ import RadioGroupInput from './helpers/inputs/RadioGroupInput';
 import SliderInput from './helpers/inputs/SliderInput';
 import TextInput from './helpers/inputs/TextInput';
 import MultiStylePropertyPanel from './helpers/style-inputs/MultiStylePropertyPanel';
+import ImagePicker from './helpers/inputs/ImagePicker';
+import ImageSender from './helpers/inputs/ImageSender';
 
 type AvatarSidebarPanelProps = {
   data: AvatarProps;
@@ -33,6 +35,8 @@ export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanel
   const imageUrl = data.props?.imageUrl ?? AvatarPropsDefaults.imageUrl;
   const alt = data.props?.alt ?? AvatarPropsDefaults.alt;
   const shape = data.props?.shape ?? AvatarPropsDefaults.shape;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <BaseSidebarPanel title={t('panels.avatar')}>
@@ -66,6 +70,28 @@ export default function AvatarSidebarPanel({ data, setData }: AvatarSidebarPanel
           updateData({ ...data, props: { ...data.props, imageUrl } });
         }}
       />
+
+      <ImageSender 
+        onLoad={(imageUrl: string) => {
+          updateData({...data, props: { ...data.props, imageUrl }})
+        }}/>
+
+      <Button 
+        style={{marginTop: 10}}
+        variant="contained" 
+        onClick={() => {
+          setIsModalOpen(true)
+        }}>
+          {t("fields.chooseImage")}
+      </Button>
+
+      <ImagePicker 
+        isOpen={ isModalOpen }
+        onClose={() => setIsModalOpen(false)}
+        onSelect={(imageUrl: string) => {
+          updateData({ ...data, props: { ...data.props, imageUrl } });
+        }} />
+
       <TextInput
         label={t('fields.altText')}
         defaultValue={alt}

@@ -8,7 +8,7 @@ import { useTranslation } from '../LocalizationContext';
 import ConfigurationPanel from './ConfigurationPanel';
 import StylesPanel from './StylesPanel';
 
-export const INSPECTOR_DRAWER_WIDTH = 320;
+export const INSPECTOR_DRAWER_WIDTH = 400;
 
 export default function InspectorDrawer() {
   const { t } = useTranslation();

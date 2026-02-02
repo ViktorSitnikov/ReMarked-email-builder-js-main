@@ -9,6 +9,7 @@ import { useTranslation } from '../../../LocalizationContext';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import ColorInput, { NullableColorInput } from './helpers/inputs/ColorInput';
+import TextInput from './helpers/inputs/TextInput';
 import { NullableFontFamily } from './helpers/inputs/FontFamily';
 import SliderInput from './helpers/inputs/SliderInput';
 
@@ -68,6 +69,11 @@ export default function EmailLayoutSidebarFields({ data, setData }: EmailLayoutS
         defaultValue={data.textColor ?? '#262626'}
         onChange={(textColor) => updateData({ ...data, textColor })}
       />
+      <TextInput 
+        label={t('fields.preHeader')}
+        placeholder={t('fields.preHeader')}
+        defaultValue={data.preHeader ?? ''}
+        onChange={(preHeader) => updateData({...data, preHeader})}/>
     </BaseSidebarPanel>
   );
 }

@@ -42,7 +42,7 @@ export default function InspectorDrawer() {
       <Box sx={{ width: INSPECTOR_DRAWER_WIDTH, height: 49, borderBottom: 1, borderColor: 'divider' }}>
         <Box px={2}>
           <Tabs value={selectedSidebarTab} onChange={(_, v) => setSidebarTab(v)}>
-            <Tab value="styles" label={t('panels.styles')} />
+            <Tab value="styles" label={t('panels.globalSett')} />
             <Tab value="block-configuration" label={t('panels.inspect')} />
           </Tabs>
         </Box>

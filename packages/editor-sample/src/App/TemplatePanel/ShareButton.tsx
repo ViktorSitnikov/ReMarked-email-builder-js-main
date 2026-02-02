@@ -18,11 +18,30 @@ export default function ShareButton() {
   const { showLoader, hideLoader } = UseLoader();
   const { showNotification } = UseNotification();
 
-  const htmlCode = useMemo(() => renderToStaticMarkup(internalDocument, { rootBlockId: 'root' }), [internalDocument]);
+
+  let htmlCode = renderToStaticMarkup(internalDocument, { rootBlockId: 'root' });
+
   const json = useMemo(() => JSON.stringify(internalDocument, null, '  '), [internalDocument]);
 
   const onClick = async () => {
     showLoader();
+
+    htmlCode = htmlCode.replace(
+      'max-width:600px', 
+      'max-width:600px;overflow:hidden'
+    );
+
+    const layoutBlock = Object.values(internalDocument).find(b => b.type === 'EmailLayout');
+    const preHeaderText = layoutBlock?.data?.preHeader;
+    if (preHeaderText) {
+      const preheaderHtml = `
+        <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family:sans-serif;">
+          ${preHeaderText}
+          ${"\u00A0\u200C".repeat(200)}
+        </div>`.replace(/\s+/g, ' ').trim();
+
+      htmlCode = htmlCode.replace('<body>', `<body>${preheaderHtml}`);
+    }
 
     const targetTextAreaEl = document.getElementById("emailHtml") as HTMLTextAreaElement | null;
 

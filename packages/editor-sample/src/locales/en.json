@@ -11,7 +11,7 @@
     "image": "Image block",
     "spacer": "Spacer block",
     "global": "Global",
-    "styles": "Styles",
+    "globalSett": "Global",
     "inspect": "Inspect"
   },
   "blocks": {
@@ -67,7 +67,8 @@
     "column2": "Column 2",
     "column3": "Column 3",
     "uploadFiles": "Upload image",
-    "chooseImage": "Choose from uploaded ones"
+    "chooseImage": "Choose from uploaded ones",
+    "preHeader": "Pre-header text"
   },
   "options": {
     "circle": "Circle",

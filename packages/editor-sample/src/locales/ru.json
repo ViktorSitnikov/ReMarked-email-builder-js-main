@@ -11,7 +11,7 @@
     "image": "Изображение",
     "spacer": "Отступ (Spacer)",
     "global": "Общие настройки",
-    "styles": "Стили",
+    "globalSett": "Общие",
     "inspect": "Свойства"
   },
   "blocks": {
@@ -67,7 +67,8 @@
     "column2": "Колонка 2",
     "column3": "Колонка 3",
     "uploadFiles": "Загрузить изображение",
-    "chooseImage": "Выбрать из имеющихся"
+    "chooseImage": "Выбрать из имеющихся",
+    "preHeader": "Текст прехедера"
   },
   "options": {
     "circle": "Круг",

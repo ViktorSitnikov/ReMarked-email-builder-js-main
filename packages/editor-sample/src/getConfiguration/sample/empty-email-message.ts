@@ -9,6 +9,7 @@ const EMPTY_EMAIL_MESSAGE: TEditorConfiguration = {
       textColor: '#262626',
       fontFamily: 'MODERN_SANS',
       childrenIds: [],
+      preHeader: '',
     },
   },
 };

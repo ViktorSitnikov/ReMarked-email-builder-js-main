@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { IosShareOutlined } from '@mui/icons-material';
+import { SaveAltOutlined } from '@mui/icons-material';
 import { IconButton, Tooltip } from '@mui/material';
 
 import { UseLoader } from '../LoaderContext';
@@ -71,7 +71,7 @@ export default function ShareButton() {
     <>
       <IconButton onClick={() => onClick()}>
         <Tooltip title={t('tooltips.share')}>
-          <IosShareOutlined fontSize="small" />
+          <SaveAltOutlined fontSize="small" />
         </Tooltip>
       </IconButton>
     </>

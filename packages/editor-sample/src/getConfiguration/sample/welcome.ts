@@ -18,6 +18,7 @@ const WELCOME: TEditorConfiguration = {
         'block-1709571302968',
         'block-1709571282795',
       ],
+      preHeader: 'Welcome to our service!',
     },
   },
   'block-1709571212684': {
